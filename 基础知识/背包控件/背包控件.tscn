@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgasoad01d7kq"]
+
+[ext_resource type="Script" path="res://基础知识/背包控件/背包控件.gd" id="1_63o8g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhj44"]
+font_size = 61
+font_color = Color(1, 0.597635, 0.391928, 1)
+outline_size = 70
+outline_color = Color(0.535895, 0.583066, 1, 1)
+shadow_size = 126
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(14.71, 19.99)
+
+[node name="背包控件" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_63o8g")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 456.0
+offset_bottom = 422.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 452.0
+offset_bottom = 417.0
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 54.0
+offset_right = 872.0
+offset_bottom = 287.0
+text = "你好"
+label_settings = SubResource("LabelSettings_lhj44")
+horizontal_alignment = 1
+vertical_alignment = 1

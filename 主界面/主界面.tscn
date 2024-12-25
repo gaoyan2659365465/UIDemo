@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbk07oy7u564y"]
+
+[ext_resource type="Texture2D" uid="uid://o61dj3tysy0" path="res://主界面/素材/background.png" id="1_x6e8d"]
+[ext_resource type="Shader" path="res://主界面/素材/LightingBackground.gdshader" id="2_uq5pn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_epm7b"]
+resource_local_to_scene = true
+shader = ExtResource("2_uq5pn")
+shader_parameter/indicate = true
+shader_parameter/size = null
+shader_parameter/lighting_point = null
+shader_parameter/indicating_power = 1.0
+shader_parameter/radius_base = 0.5
+shader_parameter/static_power = 0.5
+
+[node name="主界面" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="背景图" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x6e8d")
+expand_mode = 1
+
+[node name="渐变遮罩" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_epm7b")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0313726, 0.176471, 1)

@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://chb3py54hplyd"]
+
+[ext_resource type="Texture2D" uid="uid://okxwcmfohv72" path="res://icon.svg" id="1_hw4gf"]
+[ext_resource type="Script" path="res://基础知识/背包控件/背包格子.gd" id="1_thyl0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4blq1"]
+bg_color = Color(0.546875, 0.17855, 0.203049, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(50, 50)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4blq1")
+script = ExtResource("1_thyl0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_hw4gf")
+expand_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
