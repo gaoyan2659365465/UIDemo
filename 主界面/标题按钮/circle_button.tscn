@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxm8ppbqgmtln"]
+
+[ext_resource type="Texture2D" uid="uid://drypojyiolrwq" path="res://主界面/素材/icons/settings.png" id="1_7ixij"]
+[ext_resource type="StyleBox" uid="uid://qetaoc8raq5b" path="res://主界面/标题按钮/按钮样式stylebox.tres" id="1_g1j0v"]
+[ext_resource type="Script" path="res://主界面/标题按钮/circle_button.gd" id="3_7j8lx"]
+
+[node name="CircleButton" type="Button"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+focus_mode = 0
+theme_override_styles/disabled = ExtResource("1_g1j0v")
+theme_override_styles/hover = ExtResource("1_g1j0v")
+theme_override_styles/pressed = ExtResource("1_g1j0v")
+theme_override_styles/normal = ExtResource("1_g1j0v")
+icon = ExtResource("1_7ixij")
+icon_alignment = 1
+script = ExtResource("3_7j8lx")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

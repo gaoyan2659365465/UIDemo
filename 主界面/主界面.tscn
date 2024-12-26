@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbk07oy7u564y"]
+[gd_scene load_steps=22 format=3 uid="uid://dbk07oy7u564y"]
 
 [ext_resource type="Texture2D" uid="uid://o61dj3tysy0" path="res://主界面/素材/background.png" id="1_x6e8d"]
 [ext_resource type="Shader" path="res://主界面/素材/LightingBackground.gdshader" id="2_uq5pn"]
+[ext_resource type="Texture2D" uid="uid://dotvkdu64344j" path="res://主界面/素材/icons/casette.svg" id="3_2frlg"]
+[ext_resource type="Shader" path="res://shaders/canvas_alpha_to_blur.gdshader" id="4_csoxg"]
+[ext_resource type="FontFile" uid="uid://bd4vhm6dvnuue" path="res://主界面/素材/fonts/Games.ttf" id="4_jj4fi"]
+[ext_resource type="PackedScene" uid="uid://dxm8ppbqgmtln" path="res://主界面/标题按钮/circle_button.tscn" id="6_apovb"]
+[ext_resource type="Texture2D" uid="uid://cewj8er7rgjhq" path="res://主界面/素材/icons/left.png" id="7_egaa8"]
+[ext_resource type="Texture2D" uid="uid://cojmsogxnfbum" path="res://主界面/素材/icons/page.png" id="8_foo5m"]
+[ext_resource type="Texture2D" uid="uid://bcyql8pbvs5yj" path="res://主界面/素材/icons/song.png" id="9_ogjkd"]
+[ext_resource type="Texture2D" uid="uid://cxpbdejhyhyxu" path="res://主界面/素材/icons/lyrics.png" id="10_c6yrp"]
+[ext_resource type="Texture2D" uid="uid://de686ygqs5poa" path="res://主界面/素材/icons/logout.png" id="11_5pvlx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_epm7b"]
 resource_local_to_scene = true
@@ -13,6 +22,42 @@ shader_parameter/indicating_power = 1.0
 shader_parameter/radius_base = 0.5
 shader_parameter/static_power = 0.5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct0an"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.294118, 0.180392, 0.431373, 0.439216)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clhq1"]
+shader = ExtResource("4_csoxg")
+shader_parameter/panel_blur = 2.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rd80"]
+bg_color = Color(0.227451, 0.141176, 0.333333, 0.439216)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jlfbl"]
+font = ExtResource("4_jj4fi")
+font_size = 42
+font_color = Color(1, 1, 1, 0.192157)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nengs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwd0y"]
+shader = ExtResource("4_csoxg")
+shader_parameter/panel_blur = 2.5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nue7b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pir3g"]
+bg_color = Color(1, 1, 1, 0.117647)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfcsh"]
+bg_color = Color(0.294118, 0.180392, 0.431373, 0.439216)
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
 [node name="主界面" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -21,7 +66,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="背景图" type="TextureRect" parent="."]
+[node name="背景图" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="背景图" type="TextureRect" parent="背景图"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +84,7 @@ grow_vertical = 2
 texture = ExtResource("1_x6e8d")
 expand_mode = 1
 
-[node name="渐变遮罩" type="ColorRect" parent="."]
+[node name="渐变遮罩" type="ColorRect" parent="背景图"]
 material = SubResource("ShaderMaterial_epm7b")
 layout_mode = 1
 anchors_preset = 15
@@ -40,3 +93,154 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0862745, 0.0313726, 0.176471, 1)
+
+[node name="LeftBar" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 61.0
+offset_right = 180.0
+offset_bottom = 783.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.097
+anchor_right = 1.333
+anchor_bottom = 1.157
+offset_left = 120.0
+offset_top = -0.0340042
+offset_right = 0.0529938
+offset_bottom = -0.354065
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Top" type="Panel" parent="LeftBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ct0an")
+
+[node name="TopTexture" type="TextureRect" parent="LeftBar/VBoxContainer/Top"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 26.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2frlg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Middle" type="Panel" parent="LeftBar/VBoxContainer"]
+material = SubResource("ShaderMaterial_clhq1")
+custom_minimum_size = Vector2(92, 75)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3rd80")
+
+[node name="Empty" type="Control" parent="LeftBar/VBoxContainer/Middle"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="LeftBar/VBoxContainer/Middle/Empty"]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 370.5
+offset_right = 279.5
+offset_bottom = 416.5
+rotation = -1.5708
+text = "LAM PROJECT"
+label_settings = SubResource("LabelSettings_jlfbl")
+
+[node name="Content" type="Panel" parent="LeftBar/VBoxContainer/Middle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nengs")
+
+[node name="Menu" type="Panel" parent="LeftBar/VBoxContainer/Middle/Content"]
+material = SubResource("ShaderMaterial_hwd0y")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nue7b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftBar/VBoxContainer/Middle/Content/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="BackButton" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer" instance=ExtResource("6_apovb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("7_egaa8")
+
+[node name="IstrumentMenuButton" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer" instance=ExtResource("6_apovb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("8_foo5m")
+
+[node name="PlaySongButton" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer" instance=ExtResource("6_apovb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("9_ogjkd")
+
+[node name="MatchmakingButton" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer" instance=ExtResource("6_apovb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("10_c6yrp")
+
+[node name="SettingsButton" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer" instance=ExtResource("6_apovb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sep" type="Control" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer/Sep"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pir3g")
+
+[node name="LogoutButton" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer" instance=ExtResource("6_apovb")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("11_5pvlx")
+
+[node name="Bottom" type="Panel" parent="LeftBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dfcsh")
