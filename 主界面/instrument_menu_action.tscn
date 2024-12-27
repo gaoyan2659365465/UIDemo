@@ -1,0 +1,165 @@
+[gd_scene load_steps=19 format=3 uid="uid://bl023ujganfwm"]
+
+[ext_resource type="Shader" path="res://shaders/canvas_alpha_to_blur.gdshader" id="1_m7h5y"]
+[ext_resource type="Script" path="res://主界面/instrument_menu_action.gd" id="1_xnqlv"]
+[ext_resource type="Texture2D" uid="uid://cojmsogxnfbum" path="res://主界面/素材/gui/icons/page.png" id="2_6jinv"]
+[ext_resource type="Texture2D" uid="uid://4jhy1ls4ta6u" path="res://主界面/素材/gui/blur.jpg" id="2_ofqdk"]
+[ext_resource type="Texture2D" uid="uid://cmdd61q57jiu" path="res://主界面/素材/gui/icons/course.png" id="3_31133"]
+[ext_resource type="FontFile" uid="uid://bd4vhm6dvnuue" path="res://主界面/素材/fonts/Games.ttf" id="4_fd8tm"]
+[ext_resource type="FontFile" uid="uid://df06bw7a1s1u7" path="res://主界面/素材/fonts/Montserrat-Bold.ttf" id="5_lbwvx"]
+[ext_resource type="Texture2D" uid="uid://dfxg2q3m2tb8m" path="res://主界面/素材/gui/icons/right.png" id="6_86c2q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vk52q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1quta"]
+shader = ExtResource("1_m7h5y")
+shader_parameter/panel_blur = 2.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4xaw"]
+bg_color = Color(0.737255, 0.00392157, 0.917647, 0.133333)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.823529, 0.964706, 0.388235)
+border_blend = true
+corner_radius_top_left = 39
+corner_radius_top_right = 39
+corner_radius_bottom_right = 39
+corner_radius_bottom_left = 39
+
+[sub_resource type="LabelSettings" id="LabelSettings_q6cbp"]
+line_spacing = 0.0
+font = ExtResource("4_fd8tm")
+font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7baxd"]
+bg_color = Color(0.980392, 0, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.776471, 0, 0.796078, 1)
+corner_radius_top_left = 29
+corner_radius_top_right = 29
+corner_radius_bottom_right = 29
+corner_radius_bottom_left = 29
+shadow_color = Color(1, 0.262745, 0.784314, 0.14902)
+shadow_size = 27
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t8b0"]
+bg_color = Color(1, 1, 1, 0.0784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.823529, 0.964706, 0.2)
+corner_radius_top_left = 39
+corner_radius_top_right = 39
+corner_radius_bottom_right = 39
+corner_radius_bottom_left = 39
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xrqd"]
+bg_color = Color(0.258824, 0.25098, 0.278431, 0.454902)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.823529, 0.964706, 0.2)
+corner_radius_top_left = 39
+corner_radius_top_right = 39
+corner_radius_bottom_right = 39
+corner_radius_bottom_left = 39
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgrew"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmcxv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obwrt"]
+
+[node name="InstrumentMenuAction" type="PanelContainer"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 347.0
+offset_bottom = 81.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vk52q")
+script = ExtResource("1_xnqlv")
+text = "Learn A Song"
+icon = ExtResource("2_6jinv")
+
+[node name="BackPanel" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_1quta")
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4xaw")
+
+[node name="Background" type="TextureRect" parent="BackPanel"]
+self_modulate = Color(1, 1, 1, 0.0862745)
+layout_mode = 2
+texture = ExtResource("2_ofqdk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackPanel"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="BackPanel/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BackPanel/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(34, 0)
+layout_mode = 2
+texture = ExtResource("3_31133")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer2" type="Control" parent="BackPanel/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BackPanel/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Learn A Song"
+label_settings = SubResource("LabelSettings_q6cbp")
+vertical_alignment = 1
+
+[node name="Right" type="CenterContainer" parent="BackPanel/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SelectBtn" type="Button" parent="BackPanel/HBoxContainer/HBoxContainer/Right"]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("5_lbwvx")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_7baxd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7baxd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7baxd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7baxd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7baxd")
+icon = ExtResource("6_86c2q")
+icon_alignment = 1
+
+[node name="Spacer3" type="Control" parent="BackPanel/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="ButtonOverlay" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_4t8b0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4xrqd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lgrew")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dmcxv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_obwrt")
+
+[connection signal="mouse_entered" from="ButtonOverlay" to="." method="_on_button_overlay_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonOverlay" to="." method="_on_button_overlay_mouse_exited"]
+[connection signal="pressed" from="ButtonOverlay" to="." method="_on_button_overlay_pressed"]

@@ -1,16 +1,19 @@
-[gd_scene load_steps=22 format=3 uid="uid://dbk07oy7u564y"]
+[gd_scene load_steps=26 format=3 uid="uid://dbk07oy7u564y"]
 
 [ext_resource type="Texture2D" uid="uid://o61dj3tysy0" path="res://主界面/素材/background.png" id="1_x6e8d"]
 [ext_resource type="Shader" path="res://主界面/素材/LightingBackground.gdshader" id="2_uq5pn"]
-[ext_resource type="Texture2D" uid="uid://dotvkdu64344j" path="res://主界面/素材/icons/casette.svg" id="3_2frlg"]
+[ext_resource type="Texture2D" uid="uid://dotvkdu64344j" path="res://主界面/素材/gui/icons/casette.svg" id="3_2frlg"]
 [ext_resource type="Shader" path="res://shaders/canvas_alpha_to_blur.gdshader" id="4_csoxg"]
 [ext_resource type="FontFile" uid="uid://bd4vhm6dvnuue" path="res://主界面/素材/fonts/Games.ttf" id="4_jj4fi"]
 [ext_resource type="PackedScene" uid="uid://dxm8ppbqgmtln" path="res://主界面/标题按钮/circle_button.tscn" id="6_apovb"]
-[ext_resource type="Texture2D" uid="uid://cewj8er7rgjhq" path="res://主界面/素材/icons/left.png" id="7_egaa8"]
-[ext_resource type="Texture2D" uid="uid://cojmsogxnfbum" path="res://主界面/素材/icons/page.png" id="8_foo5m"]
-[ext_resource type="Texture2D" uid="uid://bcyql8pbvs5yj" path="res://主界面/素材/icons/song.png" id="9_ogjkd"]
-[ext_resource type="Texture2D" uid="uid://cxpbdejhyhyxu" path="res://主界面/素材/icons/lyrics.png" id="10_c6yrp"]
-[ext_resource type="Texture2D" uid="uid://de686ygqs5poa" path="res://主界面/素材/icons/logout.png" id="11_5pvlx"]
+[ext_resource type="Texture2D" uid="uid://cewj8er7rgjhq" path="res://主界面/素材/gui/icons/left.png" id="7_egaa8"]
+[ext_resource type="Texture2D" uid="uid://cojmsogxnfbum" path="res://主界面/素材/gui/icons/page.png" id="8_foo5m"]
+[ext_resource type="PackedScene" uid="uid://bl023ujganfwm" path="res://主界面/instrument_menu_action.tscn" id="12_fpu20"]
+[ext_resource type="Texture2D" uid="uid://bcyql8pbvs5yj" path="res://主界面/素材/gui/icons/song.png" id="13_3fvy7"]
+[ext_resource type="Texture2D" uid="uid://cxpbdejhyhyxu" path="res://主界面/素材/gui/icons/lyrics.png" id="14_63fuu"]
+[ext_resource type="Texture2D" uid="uid://chddge5ps0ym4" path="res://主界面/素材/gui/icons/filters.png" id="15_7de1o"]
+[ext_resource type="Texture2D" uid="uid://drypojyiolrwq" path="res://主界面/素材/gui/icons/settings.png" id="16_uycna"]
+[ext_resource type="Texture2D" uid="uid://de686ygqs5poa" path="res://主界面/素材/gui/icons/logout.png" id="17_txxob"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_epm7b"]
 resource_local_to_scene = true
@@ -58,6 +61,10 @@ bg_color = Color(0.294118, 0.180392, 0.431373, 0.439216)
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
+[sub_resource type="LabelSettings" id="LabelSettings_i8kgc"]
+font = ExtResource("4_jj4fi")
+font_size = 90
+
 [node name="主界面" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -98,7 +105,7 @@ color = Color(0.0862745, 0.0313726, 0.176471, 1)
 anchors_preset = 0
 offset_left = 21.0
 offset_top = 61.0
-offset_right = 180.0
+offset_right = 127.0
 offset_bottom = 783.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftBar"]
@@ -206,13 +213,13 @@ icon = ExtResource("8_foo5m")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("9_ogjkd")
+icon = ExtResource("13_3fvy7")
 
 [node name="MatchmakingButton" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer" instance=ExtResource("6_apovb")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("10_c6yrp")
+icon = ExtResource("14_63fuu")
 
 [node name="SettingsButton" parent="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer" instance=ExtResource("6_apovb")]
 layout_mode = 2
@@ -238,9 +245,137 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pir3g")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-icon = ExtResource("11_5pvlx")
+icon = ExtResource("17_txxob")
 
 [node name="Bottom" type="Panel" parent="LeftBar/VBoxContainer"]
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dfcsh")
+
+[node name="Right" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 204.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Left" type="Control" parent="Right"]
+layout_mode = 1
+anchor_right = 0.4
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Right/Left"]
+layout_mode = 0
+offset_right = 686.4
+offset_bottom = 1080.0
+
+[node name="Spacer" type="Control" parent="Right/Left/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="InstrumentTitle" type="Label" parent="Right/Left/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MANDOLINE"
+label_settings = SubResource("LabelSettings_i8kgc")
+vertical_alignment = 1
+
+[node name="Details" type="HBoxContainer" parent="Right/Left/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Songs" type="HBoxContainer" parent="Right/Left/VBoxContainer/Details"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="Right/Left/VBoxContainer/Details/Songs"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+texture = ExtResource("13_3fvy7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SongsNumber" type="Label" parent="Right/Left/VBoxContainer/Details/Songs"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "0"
+
+[node name="SongsCountLabel" type="Label" parent="Right/Left/VBoxContainer/Details/Songs"]
+layout_mode = 2
+mouse_filter = 1
+text = "songs"
+
+[node name="Courses" type="HBoxContainer" parent="Right/Left/VBoxContainer/Details"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="Right/Left/VBoxContainer/Details/Courses"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+texture = ExtResource("8_foo5m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoursesNumber" type="Label" parent="Right/Left/VBoxContainer/Details/Courses"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "0"
+
+[node name="CoursesCountLabel" type="Label" parent="Right/Left/VBoxContainer/Details/Courses"]
+layout_mode = 2
+mouse_filter = 1
+text = "Courses"
+
+[node name="Spacer2" type="Control" parent="Right/Left/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="Right/Left/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LearnButton" parent="Right/Left/VBoxContainer/Actions" instance=ExtResource("12_fpu20")]
+layout_mode = 2
+
+[node name="PlayButton" parent="Right/Left/VBoxContainer/Actions" instance=ExtResource("12_fpu20")]
+layout_mode = 2
+text = "Play A Song"
+icon = ExtResource("13_3fvy7")
+
+[node name="MatchesButton" parent="Right/Left/VBoxContainer/Actions" instance=ExtResource("12_fpu20")]
+layout_mode = 2
+text = "Matches"
+icon = ExtResource("14_63fuu")
+
+[node name="TuningButton" parent="Right/Left/VBoxContainer/Actions" instance=ExtResource("12_fpu20")]
+layout_mode = 2
+text = "Tuner"
+icon = ExtResource("15_7de1o")
+
+[node name="SettingsButton" parent="Right/Left/VBoxContainer/Actions" instance=ExtResource("12_fpu20")]
+layout_mode = 2
+text = "Settings"
+icon = ExtResource("16_uycna")
+
+[node name="QuitButton" parent="Right/Left/VBoxContainer/Actions" instance=ExtResource("12_fpu20")]
+layout_mode = 2
+text = "Quit"
+icon = ExtResource("17_txxob")
+
+[node name="Right" type="Control" parent="Right"]
+layout_mode = 1
+anchor_left = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="selected" from="Right/Left/VBoxContainer/Actions/LearnButton" to="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer/BackButton" method="_on_learn_button_selected"]
+[connection signal="selected" from="Right/Left/VBoxContainer/Actions/PlayButton" to="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer/BackButton" method="_on_play_button_selected"]
+[connection signal="selected" from="Right/Left/VBoxContainer/Actions/MatchesButton" to="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer/BackButton" method="_on_matches_button_selected"]
+[connection signal="selected" from="Right/Left/VBoxContainer/Actions/TuningButton" to="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer/BackButton" method="_on_tuning_button_selected"]
+[connection signal="selected" from="Right/Left/VBoxContainer/Actions/SettingsButton" to="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer/BackButton" method="_on_settings_button_selected"]
+[connection signal="selected" from="Right/Left/VBoxContainer/Actions/QuitButton" to="LeftBar/VBoxContainer/Middle/Content/Menu/VBoxContainer/BackButton" method="_on_quit_button_selected"]
